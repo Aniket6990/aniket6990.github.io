@@ -83,7 +83,7 @@ export default function Sidebar({ active, onNav, collapsed }: SidebarProps) {
               transition={{ duration: 0.25, ease: EASE }}
               className="overflow-hidden min-w-0"
             >
-              <p className="text-light text-sm font-semibold leading-tight whitespace-nowrap">Aniket</p>
+              <p className="text-light text-sm font-semibold leading-tight whitespace-nowrap">Aniket Singh</p>
               <p className="text-light/40 text-xs whitespace-nowrap mt-0.5">Software Engineer</p>
             </motion.div>
           )}

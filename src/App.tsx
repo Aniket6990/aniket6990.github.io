@@ -140,7 +140,7 @@ function App() {
               />
             </div>
             <div>
-              <p className="text-dark font-semibold text-sm leading-none">Aniket</p>
+              <p className="text-dark font-semibold text-sm leading-none">Aniket Singh</p>
               <p className="text-dark/40 text-[10px] mt-0.5">Software Engineer</p>
             </div>
           </div>
