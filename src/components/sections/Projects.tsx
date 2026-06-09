@@ -1,7 +1,10 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { SectionTitle } from '../ui/SectionTitle';
 import { Tag } from '../ui/Tag';
 import { projects } from '../../data/portfolio';
+
+const EASE: [number, number, number, number] = [0.4, 0, 0.2, 1];
 
 const ExternalIcon = () => (
   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
@@ -18,73 +21,128 @@ const GithubIcon = () => (
 );
 
 export default function Projects() {
+  const [openId, setOpenId] = useState<number | null>(null);
+
+  const toggle = (id: number) => setOpenId((prev) => (prev === id ? null : id));
+
   return (
-    <section id="projects" className="min-h-screen px-8 lg:px-12 py-12">
+    <section id="projects" className="px-8 lg:px-12 py-12">
       <SectionTitle>Projects</SectionTitle>
 
-      <div className="space-y-4">
-        {projects.map((project, i) => (
-          <motion.article
-            key={project.id}
-            className="group bg-white/40 hover:bg-white/70 border border-dark/8 hover:border-dark/15 rounded-2xl p-5 lg:p-6 transition-all duration-300"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{
-              delay: i * 0.06,
-              duration: 0.55,
-              ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
-            }}
-          >
-            {/* Header row */}
-            <div className="flex items-start justify-between gap-3 mb-3">
-              <div className="flex items-center gap-2.5 flex-wrap">
-                <h3 className="text-dark font-semibold text-base">{project.title}</h3>
-                <span className="text-dark/25 text-xs border border-dark/15 rounded-full px-2 py-0.5">
-                  {project.year}
-                </span>
-              </div>
+      <div className="divide-y divide-dark/10 border-t border-dark/10">
+        {projects.map((proj, i) => {
+          const isOpen = openId === proj.id;
 
-              {/* Links */}
-              <div className="flex items-center gap-2 shrink-0">
-                {project.repo && (
-                  <a
-                    href={project.repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-xs text-dark/40 hover:text-dark border border-dark/10 hover:border-dark/25 rounded-full px-2.5 py-1 transition-all duration-200"
+          return (
+            <div key={proj.id}>
+              {/* ── Row header ── */}
+              <button
+                onClick={() => toggle(proj.id)}
+                className="w-full group"
+              >
+                <div className="grid grid-cols-[32px_1fr_1fr_1fr_24px] lg:grid-cols-[40px_80px_160px_1fr_24px] gap-x-4 lg:gap-x-6 items-start py-5 text-left">
+
+                  {/* Index */}
+                  <span className="text-dark/30 text-xs font-medium tabular-nums pt-0.5">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+
+                  {/* Year */}
+                  <span className="text-dark/35 text-xs uppercase tracking-wide pt-0.5">
+                    {proj.year}
+                  </span>
+
+                  {/* Title — bold */}
+                  <span className="text-dark text-xs font-bold uppercase tracking-wide leading-snug">
+                    {proj.title}
+                  </span>
+
+                  {/* Objective (one-liner) */}
+                  <span className="text-dark/60 text-xs leading-snug">
+                    {proj.objective}
+                  </span>
+
+                  {/* Toggle */}
+                  <span
+                    className={`text-dark/40 group-hover:text-dark text-sm font-light transition-colors duration-200 pt-0.5 select-none ${isOpen ? 'text-dark' : ''}`}
+                    aria-hidden
                   >
-                    <GithubIcon />
-                    Repo
-                  </a>
-                )}
-                {project.link && (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-xs text-dark/40 hover:text-dark border border-dark/10 hover:border-dark/25 rounded-full px-2.5 py-1 transition-all duration-200"
+                    {isOpen ? '−' : '+'}
+                  </span>
+                </div>
+              </button>
+
+              {/* ── Expanded content ── */}
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    key="content"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.35, ease: EASE }}
+                    style={{ overflow: 'hidden' }}
                   >
-                    <ExternalIcon />
-                    Live
-                  </a>
+                    <div className="pb-7 pl-[calc(32px+1rem)] lg:pl-[calc(40px+1.5rem)]">
+                      {/* Summary */}
+                      <p className="text-dark/60 text-sm mb-4 leading-relaxed">
+                        {proj.summary}
+                      </p>
+
+                      {/* Bullets */}
+                      <ul className="space-y-2 mb-5">
+                        {proj.bullets.map((b, bi) => (
+                          <li key={bi} className="flex items-start gap-2.5 text-sm text-dark/70 leading-relaxed">
+                            <span className="mt-[7px] w-1 h-1 rounded-full bg-dark/30 shrink-0" />
+                            {b}
+                          </li>
+                        ))}
+                      </ul>
+
+                      {/* Highlight */}
+                      <p className="text-dark/40 text-xs italic mb-5">{proj.highlight}</p>
+
+                      {/* Links + tech */}
+                      <div className="flex items-center justify-between gap-4 pt-4 border-t border-dark/8 flex-wrap">
+                        <div className="flex flex-wrap gap-1.5">
+                          {proj.tech.map((t) => (
+                            <Tag key={t} label={t} />
+                          ))}
+                        </div>
+                        <div className="flex gap-2 shrink-0">
+                          {proj.repo && (
+                            <a
+                              href={proj.repo}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="flex items-center gap-1.5 text-xs text-dark/40 hover:text-dark border border-dark/10 hover:border-dark/25 rounded-full px-2.5 py-1 transition-all duration-200"
+                            >
+                              <GithubIcon />
+                              Repo
+                            </a>
+                          )}
+                          {proj.link && (
+                            <a
+                              href={proj.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="flex items-center gap-1.5 text-xs text-dark/40 hover:text-dark border border-dark/10 hover:border-dark/25 rounded-full px-2.5 py-1 transition-all duration-200"
+                            >
+                              <ExternalIcon />
+                              Live
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
                 )}
-              </div>
+              </AnimatePresence>
             </div>
-
-            {/* Objective */}
-            <p className="text-dark/55 text-sm leading-relaxed mb-4">
-              {project.objective}
-            </p>
-
-            {/* Tech stack */}
-            <div className="flex flex-wrap gap-1.5">
-              {project.tech.map((t) => (
-                <Tag key={t} label={t} />
-              ))}
-            </div>
-          </motion.article>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
