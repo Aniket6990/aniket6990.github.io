@@ -8,8 +8,8 @@ const SUMMARY = `Full-stack engineer with 3+ years building production systems a
 
 Fluent with AI-assisted development (Cursor, Claude Code, GitHub Copilot) as a core part of my daily workflow. Strong background in blockchain infrastructure — EVM chains, ERC-4337, smart contracts, and scalable microservices.`;
 
-// Only show GitHub and LinkedIn in the About section
-const PROFILE_SOCIALS = ['GitHub', 'LinkedIn'];
+// Only show GitHub, LinkedIn and X in the About section
+const PROFILE_SOCIALS = ['GitHub', 'LinkedIn', 'X'];
 
 export default function About() {
   const filteredSocials = socials.filter((s) => PROFILE_SOCIALS.includes(s.label));

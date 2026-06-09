@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-const SECTIONS = ['about', 'skills', 'projects', 'experience', 'blogs'] as const;
+const SECTIONS = ["about", "skills", "projects", "experience"] as const;
 export type SectionId = (typeof SECTIONS)[number];
 
 export function useActiveSection() {
-  const [active, setActive] = useState<SectionId>('about');
+  const [active, setActive] = useState<SectionId>("about");
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -18,10 +18,10 @@ export function useActiveSection() {
           if (entry.isIntersecting) setActive(id);
         },
         {
-          root: document.getElementById('main-scroll'),
-          rootMargin: '-30% 0px -60% 0px',
+          root: document.getElementById("main-scroll"),
+          rootMargin: "-30% 0px -60% 0px",
           threshold: 0,
-        }
+        },
       );
       observer.observe(el);
       observers.push(observer);
@@ -31,10 +31,10 @@ export function useActiveSection() {
   }, []);
 
   const scrollTo = (id: SectionId) => {
-    const container = document.getElementById('main-scroll');
+    const container = document.getElementById("main-scroll");
     const el = document.getElementById(id);
     if (container && el) {
-      container.scrollTo({ top: el.offsetTop - 48, behavior: 'smooth' });
+      container.scrollTo({ top: el.offsetTop - 48, behavior: "smooth" });
     }
   };
 
