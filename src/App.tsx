@@ -219,7 +219,7 @@ function App() {
           id="main-scroll"
           className="flex-1 overflow-y-auto scrollbar-thin"
         >
-          <div className="max-w-2xl mx-auto divide-y divide-dark/8">
+          <div className="max-w-5xl mx-auto">
             <About />
             <Experience />
             <Projects />
