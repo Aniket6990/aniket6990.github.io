@@ -144,7 +144,7 @@ function App() {
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-full overflow-hidden border border-dark/15 shrink-0">
               <img
-                src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=100&q=80"
+                src="/avatar.jpg"
                 alt="Aniket"
                 className="w-full h-full object-cover"
               />

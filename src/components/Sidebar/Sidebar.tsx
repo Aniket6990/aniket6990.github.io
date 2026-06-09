@@ -71,7 +71,7 @@ export default function Sidebar({ active, onNav, collapsed }: SidebarProps) {
             }`}
           >
             <img
-              src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=200&q=80"
+              src="/avatar.jpg"
               alt="Aniket"
               className="w-full h-full object-cover"
             />

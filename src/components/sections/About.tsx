@@ -27,8 +27,12 @@ export default function About() {
       >
         {/* Avatar */}
         <div className="shrink-0">
-          <div className="w-24 h-24 lg:w-28 lg:h-28 rounded-2xl overflow-hidden border-2 border-dark/10 shadow-sm bg-dark/5 flex items-center justify-center">
-            <span className="text-4xl font-black text-dark/20">AS</span>
+          <div className="w-24 h-24 lg:w-28 lg:h-28 rounded-2xl overflow-hidden border-2 border-dark/10 shadow-sm">
+            <img
+              src="/avatar.jpg"
+              alt="Aniket Singh"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
 
