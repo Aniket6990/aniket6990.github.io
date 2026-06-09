@@ -52,12 +52,6 @@ export default function Experience() {
                   {/* Role */}
                   <span className="text-dark/70 text-xs uppercase tracking-wide leading-snug">
                     {exp.role}
-                    {exp.current && (
-                      <span className="ml-2 inline-flex items-center gap-1 text-emerald-600 normal-case tracking-normal">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                        Current
-                      </span>
-                    )}
                   </span>
 
                   {/* Toggle */}

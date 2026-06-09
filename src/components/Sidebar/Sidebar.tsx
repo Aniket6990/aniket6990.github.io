@@ -11,18 +11,23 @@ const NavIcons: Record<SectionId, ReactElement> = {
       <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
     </svg>
   ),
-  experience: (
+  skills: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="w-[18px] h-[18px]">
-      <rect x="2" y="7" width="20" height="14" rx="2" />
-      <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
-      <line x1="12" y1="12" x2="12" y2="16" />
-      <line x1="10" y1="14" x2="14" y2="14" />
+      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
     </svg>
   ),
   projects: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="w-[18px] h-[18px]">
       <polyline points="16 18 22 12 16 6" />
       <polyline points="8 6 2 12 8 18" />
+    </svg>
+  ),
+  experience: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="w-[18px] h-[18px]">
+      <rect x="2" y="7" width="20" height="14" rx="2" />
+      <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
+      <line x1="12" y1="12" x2="12" y2="16" />
+      <line x1="10" y1="14" x2="14" y2="14" />
     </svg>
   ),
   blogs: (
@@ -43,8 +48,9 @@ interface SidebarProps {
 
 const NAV_ITEMS: { id: SectionId; label: string }[] = [
   { id: 'about',      label: 'About'      },
-  { id: 'experience', label: 'Experience' },
+  { id: 'skills',     label: 'Skills'     },
   { id: 'projects',   label: 'Projects'   },
+  { id: 'experience', label: 'Experience' },
   { id: 'blogs',      label: 'Blogs'      },
 ];
 

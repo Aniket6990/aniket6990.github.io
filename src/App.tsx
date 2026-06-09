@@ -2,8 +2,9 @@ import { useState, useEffect, type ReactElement } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Sidebar from './components/Sidebar/Sidebar';
 import About from './components/sections/About';
-import Experience from './components/sections/Experience';
+import Skills from './components/sections/Skills';
 import Projects from './components/sections/Projects';
+import Experience from './components/sections/Experience';
 import Blogs from './components/sections/Blogs';
 import { useActiveSection, type SectionId } from './hooks/useActiveSection';
 
@@ -20,12 +21,11 @@ const NAV_ITEMS: { id: SectionId; label: string; icon: ReactElement }[] = [
     ),
   },
   {
-    id: 'experience',
-    label: 'Experience',
+    id: 'skills',
+    label: 'Skills',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="w-4 h-4">
-        <rect x="2" y="7" width="20" height="14" rx="2" />
-        <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
       </svg>
     ),
   },
@@ -36,6 +36,16 @@ const NAV_ITEMS: { id: SectionId; label: string; icon: ReactElement }[] = [
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="w-4 h-4">
         <polyline points="16 18 22 12 16 6" />
         <polyline points="8 6 2 12 8 18" />
+      </svg>
+    ),
+  },
+  {
+    id: 'experience',
+    label: 'Experience',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="w-4 h-4">
+        <rect x="2" y="7" width="20" height="14" rx="2" />
+        <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
       </svg>
     ),
   },
@@ -221,8 +231,9 @@ function App() {
         >
           <div className="max-w-5xl mx-auto">
             <About />
-            <Experience />
+            <Skills />
             <Projects />
+            <Experience />
             <Blogs />
           </div>
         </main>
