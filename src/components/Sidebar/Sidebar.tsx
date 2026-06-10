@@ -118,7 +118,7 @@ export default function Sidebar({ active, onNav, collapsed }: SidebarProps) {
               <p className="text-light text-sm font-semibold leading-tight whitespace-nowrap">
                 Aniket Singh
               </p>
-              <p className="text-light/40 text-xs whitespace-nowrap mt-0.5">
+              <p className="text-light/60 text-xs whitespace-nowrap mt-0.5">
                 Software Engineer
               </p>
             </motion.div>
@@ -140,7 +140,7 @@ export default function Sidebar({ active, onNav, collapsed }: SidebarProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="text-light/20 text-[9px] uppercase tracking-[0.2em] mb-3 font-semibold whitespace-nowrap overflow-hidden"
+            className="text-light/60 text-[9px] uppercase tracking-[0.2em] mb-3 font-semibold whitespace-nowrap overflow-hidden"
           >
             Navigate
           </motion.p>
@@ -171,8 +171,8 @@ export default function Sidebar({ active, onNav, collapsed }: SidebarProps) {
                   title={label}
                   className={`relative flex items-center rounded-xl transition-all duration-200 ${
                     collapsed
-                      ? `w-10 h-10 justify-center ${isActive ? "bg-light/15 text-light" : "text-light/35 hover:text-light/70 hover:bg-light/8"}`
-                      : `w-full gap-3 px-3 py-2.5 text-sm text-left ${isActive ? "bg-light/10 text-light" : "text-light/40 hover:text-light/70 hover:bg-light/5"}`
+                      ? `w-10 h-10 justify-center ${isActive ? "bg-light/15 text-light" : "text-light/60 hover:text-light/70 hover:bg-light/8"}`
+                      : `w-full gap-3 px-3 py-2.5 text-sm text-left ${isActive ? "bg-light/10 text-light" : "text-light/60 hover:text-light/80 hover:bg-light/5"}`
                   }`}
                 >
                   {/* Icon */}
@@ -227,7 +227,7 @@ export default function Sidebar({ active, onNav, collapsed }: SidebarProps) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="text-light/20 text-[9px] uppercase tracking-[0.2em] mb-3 font-semibold whitespace-nowrap"
+              className="text-light/60 text-[9px] uppercase tracking-[0.2em] mb-3 font-semibold whitespace-nowrap"
             >
               Connect
             </motion.p>
@@ -244,7 +244,7 @@ export default function Sidebar({ active, onNav, collapsed }: SidebarProps) {
               target="_blank"
               rel="noopener noreferrer"
               title={s.label}
-              className="w-8 h-8 rounded-full bg-light/5 border border-light/10 flex items-center justify-center text-light/35 hover:text-light hover:bg-light/15 hover:border-light/25 transition-all duration-200 shrink-0"
+              className="w-8 h-8 rounded-full bg-light/5 border border-light/10 flex items-center justify-center text-light/60 hover:text-light hover:bg-light/15 hover:border-light/25 transition-all duration-200 shrink-0"
             >
               <span
                 className="w-3.5 h-3.5"
@@ -264,7 +264,7 @@ export default function Sidebar({ active, onNav, collapsed }: SidebarProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="text-light/15 text-[10px] mt-5 shrink-0 whitespace-nowrap"
+            className="text-light/60 text-[10px] mt-5 shrink-0 whitespace-nowrap"
           >
             © {new Date().getFullYear()} Aniket Singh.
           </motion.p>
